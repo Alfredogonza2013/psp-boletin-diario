@@ -3,1005 +3,622 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boletín Económico Diario – PSP Palermo Sociedad Portuaria</title>
+<title>Boletín Económico Diario – PSP Grupo Coremar</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;600&display=swap');
-
-  :root {
-    --navy: #0a2540;
-    --navy-mid: #0d3060;
-    --navy-light: #113a72;
-    --teal: #13b0c4;
-    --teal-light: #1dd3e8;
-    --teal-dark: #0e8fa1;
-    --accent-gold: #f0c040;
-    --accent-red: #e84040;
-    --accent-green: #22c55e;
-    --bg-dark: #071c30;
-    --bg-card: #0d2d4a;
-    --bg-card2: #0f3355;
-    --text-primary: #e8f4fd;
-    --text-secondary: #a0c8e0;
-    --text-muted: #6a9ab5;
-    --border: rgba(19,176,196,0.18);
-    --border-card: rgba(19,176,196,0.12);
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a2a3a; font-size: 14px; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-dark);
-    color: var(--text-primary);
-    min-height: 100vh;
-    line-height: 1.6;
-  }
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #0a2540 0%, #0d3360 60%, #0a2540 100%); color: #fff; padding: 0; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; padding: 28px 36px 20px 36px; border-bottom: 2px solid #13b0c4; }
+  .header-left {}
+  .header-logo { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+  .header-sub { font-size: 10.5px; color: #13b0c4; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; font-weight: 600; }
+  .header-right { text-align: right; }
+  .edition-badge { background: #13b0c4; color: #fff; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 1px; display: inline-block; margin-bottom: 6px; }
+  .header-date { font-size: 12.5px; color: #a8d4e8; font-weight: 500; }
+  .header-gen { font-size: 10.5px; color: #7ab8d4; margin-top: 3px; }
+  .header-title-bar { background: rgba(19,176,196,0.13); padding: 12px 36px; display: flex; justify-content: space-between; align-items: center; }
+  .header-title { font-size: 18px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
+  .header-subtitle { font-size: 13px; color: #13b0c4; letter-spacing: 1.5px; font-weight: 500; }
+  .teal-line { height: 4px; background: linear-gradient(90deg, #13b0c4, #0a7a96, #13b0c4); }
 
-  /* ── HEADER ── */
-  .header {
-    background: linear-gradient(135deg, #061525 0%, var(--navy) 40%, #0a3560 70%, #0d4070 100%);
-    border-bottom: 3px solid var(--teal);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -80px;
-    width: 340px; height: 340px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(19,176,196,0.10) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .header-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 28px 36px 22px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-  }
-  .header-logo {
-    width: 70px; height: 70px;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-    box-shadow: 0 4px 20px rgba(19,176,196,0.35);
-    flex-shrink: 0;
-  }
-  .header-titles h1 {
-    font-size: 26px;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-  .header-titles .sub1 {
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--teal);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-top: 3px;
-  }
-  .header-divider {
-    width: 2px;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent, var(--teal), transparent);
-    margin: 0 6px;
-    flex-shrink: 0;
-  }
-  .header-bulletin h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--teal-light);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .header-bulletin .sub2 {
-    font-size: 11.5px;
-    color: var(--text-secondary);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    margin-top: 2px;
-  }
-  .header-right {
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .edition-badge {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 5px 14px;
-    border-radius: 20px;
-    display: inline-block;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    box-shadow: 0 2px 10px rgba(19,176,196,0.4);
-  }
-  .header-date {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.4;
-  }
-  .header-time {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 4px;
-    font-family: 'Roboto Mono', monospace;
-  }
-  .header-strip {
-    background: linear-gradient(90deg, var(--teal-dark) 0%, var(--teal) 50%, var(--teal-dark) 100%);
-    padding: 7px 36px;
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .strip-item {
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--navy);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .strip-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); opacity: 0.5; }
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .full-col { margin-bottom: 20px; }
 
-  /* ── MAIN CONTENT ── */
-  .main {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 30px 36px 50px;
-  }
+  /* SECTIONS */
+  .section { background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(10,37,64,0.09); overflow: hidden; margin-bottom: 20px; }
+  .section-header { background: #0a2540; color: #fff; padding: 11px 18px; display: flex; align-items: center; gap: 10px; }
+  .section-header h2 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  .section-icon { color: #13b0c4; font-size: 16px; }
+  .section-body { padding: 16px 18px; }
 
-  /* ── SECTION HEADERS ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-    margin-top: 36px;
-  }
-  .section-header:first-child { margin-top: 0; }
-  .section-icon {
-    width: 38px; height: 38px;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 12px rgba(19,176,196,0.3);
-  }
-  .section-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, var(--teal), transparent);
-  }
+  /* INDICATORS */
+  .indicators-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .indicator-card { background: #f5f9fd; border: 1px solid #d0e8f4; border-radius: 8px; padding: 12px 14px; text-align: center; }
+  .indicator-card.highlight { background: linear-gradient(135deg, #0a2540, #0d3360); color: #fff; border-color: #13b0c4; }
+  .indicator-card.highlight .ind-label { color: #13b0c4; }
+  .indicator-card.highlight .ind-val { color: #fff; }
+  .indicator-card.highlight .ind-change { color: #7ad4e4; }
+  .ind-label { font-size: 10px; color: #556; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+  .ind-val { font-size: 18px; font-weight: 800; color: #0a2540; margin-bottom: 3px; }
+  .ind-change { font-size: 11px; font-weight: 600; }
+  .ind-change.down { color: #c0392b; }
+  .ind-change.up { color: #16a34a; }
+  .ind-change.neutral { color: #666; }
+  .ind-unit { font-size: 10px; color: #778; margin-top: 2px; }
 
-  /* ── INDICATORS GRID ── */
-  .indicators-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-    gap: 14px;
-    margin-bottom: 6px;
-  }
-  .indicator-card {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 18px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .indicator-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(19,176,196,0.15);
-  }
-  .indicator-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--teal), var(--teal-dark));
-    border-radius: 12px 12px 0 0;
-  }
-  .ind-label {
-    font-size: 9.5px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 6px;
-  }
-  .ind-value {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text-primary);
-    font-family: 'Roboto Mono', monospace;
-    line-height: 1;
-  }
-  .ind-unit {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-top: 2px;
-  }
-  .ind-change {
-    font-size: 11px;
-    font-weight: 700;
-    font-family: 'Roboto Mono', monospace;
-    margin-top: 6px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .change-up { color: var(--accent-green); }
-  .change-down { color: var(--accent-red); }
-  .change-flat { color: var(--text-muted); }
+  /* CONTEXT CARDS */
+  .context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .context-card { background: #f5f9fd; border-left: 4px solid #13b0c4; border-radius: 6px; padding: 12px 14px; }
+  .context-card.coke { background: linear-gradient(135deg, #eaf4fb, #f0f8fc); border-left: 4px solid #0a2540; }
+  .context-card h3 { font-size: 11px; font-weight: 700; color: #0a2540; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
+  .context-card h3 span.badge { background: #13b0c4; color: #fff; font-size: 9px; padding: 2px 7px; border-radius: 10px; font-weight: 700; }
+  .context-card p { font-size: 12px; color: #334; line-height: 1.65; }
 
-  /* ── CONTEXT TABLE ── */
-  .context-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 16px;
-  }
-  .context-card {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
-    border: 1px solid var(--border-card);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .context-card-header {
-    background: linear-gradient(90deg, var(--navy-mid) 0%, var(--navy-light) 100%);
-    padding: 12px 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .ctx-icon { font-size: 16px; }
-  .ctx-title {
-    font-size: 11.5px;
-    font-weight: 700;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .ctx-status {
-    margin-left: auto;
-    font-size: 9.5px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .status-bearish { background: rgba(232,64,64,0.18); color: var(--accent-red); border: 1px solid rgba(232,64,64,0.3); }
-  .status-bullish { background: rgba(34,197,94,0.15); color: var(--accent-green); border: 1px solid rgba(34,197,94,0.3); }
-  .status-neutral { background: rgba(19,176,196,0.15); color: var(--teal); border: 1px solid var(--border); }
-  .status-mixed { background: rgba(240,192,64,0.15); color: var(--accent-gold); border: 1px solid rgba(240,192,64,0.3); }
-  .context-card-body {
-    padding: 16px 18px;
-  }
-  .context-card-body p {
-    font-size: 12.5px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-  .context-card-body .ctx-highlight {
-    color: var(--teal-light);
-    font-weight: 600;
-  }
+  /* COKE SPECIAL */
+  .coke-special { background: linear-gradient(135deg, #0a2540 0%, #0e3060 100%); border-radius: 10px; padding: 20px 22px; color: #fff; margin-bottom: 20px; }
+  .coke-special h2 { font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #13b0c4; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .coke-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .coke-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(19,176,196,0.3); border-radius: 8px; padding: 13px 15px; }
+  .coke-box h4 { font-size: 10.5px; font-weight: 700; color: #13b0c4; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; }
+  .coke-box p { font-size: 12px; color: #c8dde8; line-height: 1.6; }
+  .coke-price { font-size: 26px; font-weight: 900; color: #fff; margin: 4px 0; }
+  .coke-price-sub { font-size: 11px; color: #13b0c4; font-weight: 600; }
 
-  /* ── NEWS SECTION ── */
-  .news-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 18px;
-  }
-  .news-category {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
-    border: 1px solid var(--border-card);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .news-cat-header {
-    padding: 12px 18px;
-    background: linear-gradient(90deg, var(--navy-mid) 0%, var(--navy-light) 100%);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 9px;
-  }
-  .news-cat-icon { font-size: 15px; }
-  .news-cat-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .news-list { padding: 10px 0; }
-  .news-item {
-    padding: 11px 18px;
-    border-bottom: 1px solid rgba(19,176,196,0.07);
-    transition: background 0.18s;
-  }
+  /* NEWS */
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .news-section { background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(10,37,64,0.08); overflow: hidden; }
+  .news-section-header { background: #0a2540; color: #fff; padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+  .news-section-header h3 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+  .news-section-header .icon { color: #13b0c4; font-size: 14px; }
+  .news-list { padding: 6px 0; }
+  .news-item { padding: 9px 16px; border-bottom: 1px solid #eef3f8; display: flex; align-items: flex-start; gap: 8px; }
   .news-item:last-child { border-bottom: none; }
-  .news-item:hover { background: rgba(19,176,196,0.06); }
-  .news-item a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    display: block;
-    transition: color 0.18s;
-  }
-  .news-item a:hover { color: var(--teal-light); }
-  .news-item .news-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .news-source {
-    font-size: 9.5px;
-    color: var(--teal-dark);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .news-date {
-    font-size: 9.5px;
-    color: var(--text-muted);
-    font-family: 'Roboto Mono', monospace;
-  }
+  .news-dot { width: 7px; height: 7px; border-radius: 50%; background: #13b0c4; flex-shrink: 0; margin-top: 5px; }
+  .news-item a { font-size: 12px; color: #0a2540; text-decoration: none; line-height: 1.5; font-weight: 500; }
+  .news-item a:hover { color: #13b0c4; text-decoration: underline; }
+  .news-item .source-tag { font-size: 10px; color: #778899; font-weight: 600; margin-top: 2px; display: block; }
 
-  /* ── IMPLICATIONS ── */
-  .implications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-  .impl-card {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
-    border: 1px solid var(--border-card);
-    border-radius: 12px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .impl-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    border-radius: 12px 0 0 12px;
-  }
-  .impl-card.oportunidad::before { background: var(--accent-green); }
-  .impl-card.alerta::before { background: var(--accent-red); }
-  .impl-card.monitoreo::before { background: var(--accent-gold); }
-  .impl-card.estrategia::before { background: var(--teal); }
-  .impl-tag {
-    font-size: 9.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  .tag-oportunidad { background: rgba(34,197,94,0.15); color: var(--accent-green); border: 1px solid rgba(34,197,94,0.3); }
-  .tag-alerta { background: rgba(232,64,64,0.15); color: var(--accent-red); border: 1px solid rgba(232,64,64,0.3); }
-  .tag-monitoreo { background: rgba(240,192,64,0.15); color: var(--accent-gold); border: 1px solid rgba(240,192,64,0.3); }
-  .tag-estrategia { background: rgba(19,176,196,0.15); color: var(--teal); border: 1px solid var(--border); }
-  .impl-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-  .impl-text {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
+  /* COKE NEWS SPECIAL */
+  .coke-news-section { background: linear-gradient(135deg, #f0f8fc, #e8f4fb); border-radius: 10px; box-shadow: 0 2px 10px rgba(10,37,64,0.09); overflow: hidden; }
+  .coke-news-header { background: linear-gradient(90deg, #0a2540, #0e3060); color: #fff; padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+  .coke-news-header h3 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
 
-  /* ── TICKER STRIP ── */
-  .ticker-wrap {
-    background: rgba(10,37,64,0.9);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    padding: 8px 0;
-    margin-bottom: 30px;
-  }
-  .ticker-inner {
-    display: flex;
-    gap: 36px;
-    flex-wrap: wrap;
-    padding: 0 36px;
-  }
-  .ticker-item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 11px;
-    white-space: nowrap;
-  }
-  .ticker-label { color: var(--text-muted); font-weight: 600; }
-  .ticker-val { color: var(--text-primary); font-weight: 700; }
-  .ticker-chg-up { color: var(--accent-green); }
-  .ticker-chg-dn { color: var(--accent-red); }
+  /* STRATEGIC */
+  .strategic { background: linear-gradient(135deg, #0a2540 0%, #0d3360 100%); border-radius: 10px; padding: 20px 24px; color: #fff; margin-bottom: 20px; }
+  .strategic h2 { font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #13b0c4; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .strategic-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .strat-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(19,176,196,0.25); border-radius: 8px; padding: 13px 15px; }
+  .strat-card h4 { font-size: 11px; font-weight: 700; color: #13b0c4; margin-bottom: 7px; display: flex; align-items: center; gap: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .strat-card p { font-size: 12px; color: #b8cfd8; line-height: 1.6; }
 
-  /* ── FOOTER ── */
-  .footer {
-    background: linear-gradient(135deg, #061525 0%, var(--navy) 100%);
-    border-top: 2px solid var(--teal-dark);
-    padding: 22px 36px 18px;
-    max-width: 100%;
-  }
-  .footer-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .footer-left p {
-    font-size: 10.5px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .footer-right {
-    text-align: right;
-  }
-  .footer-right p {
-    font-size: 10px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .footer-brand {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
+  /* FOOTER */
+  .footer { background: #0a2540; color: #a0b8cc; text-align: center; padding: 18px 20px; font-size: 11px; border-top: 3px solid #13b0c4; }
+  .footer strong { color: #13b0c4; }
+  .footer a { color: #13b0c4; text-decoration: none; }
+  .footer .footer-row { margin-bottom: 5px; }
 
-  /* ── DIVIDERS ── */
-  .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 32px 0; }
+  /* DIVIDERS */
+  .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #13b0c4, transparent); margin: 8px 0; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 720px) {
-    .header-inner { flex-direction: column; }
-    .main { padding: 20px 16px 40px; }
-    .indicators-grid { grid-template-columns: repeat(2, 1fr); }
-    .ticker-inner { gap: 18px; }
-    .header-right { text-align: left; }
+  /* TAGS */
+  .tag { display: inline-block; background: rgba(19,176,196,0.15); color: #0a7a96; font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 4px; margin-bottom: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    .indicators-grid { grid-template-columns: repeat(2,1fr); }
+    .two-col, .context-grid, .news-grid, .coke-grid, .strategic-grid, .three-col { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ════ HEADER ════ -->
-<header class="header">
-  <div class="header-inner">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
     <div class="header-left">
-      <div class="header-logo">⚓</div>
-      <div class="header-titles">
-        <h1>Palermo Sociedad Portuaria</h1>
-        <div class="sub1">GRUPO COREMAR · BARRANQUILLA, COLOMBIA · INTELIGENCIA DE MERCADOS</div>
-      </div>
-      <div class="header-divider"></div>
-      <div class="header-bulletin">
-        <h2>Boletín Económico Diario</h2>
-        <div class="sub2">Operaciones Portuarias</div>
-      </div>
+      <div class="header-logo">&#9650; Palermo Sociedad Portuaria</div>
+      <div class="header-sub">GRUPO COREMAR &middot; BARRANQUILLA, COLOMBIA &middot; INTELIGENCIA DE MERCADOS</div>
     </div>
     <div class="header-right">
       <div class="edition-badge">Edición 4</div>
       <div class="header-date">Miércoles, 17 de junio de 2026</div>
-      <div class="header-time">Generado a las 16:18 COT</div>
+      <div class="header-gen">Generado a las 16:39 COT</div>
     </div>
   </div>
-  <div class="header-strip">
-    <span class="strip-item">🔵 TRM: $3.427,07 COP/USD</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">🛢 Brent: $79,24 USD/bbl</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">⛽ WTI: $76,52 USD/bbl</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">🔥 Gas Natural: $3,29 USD/MMBtu</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">🌽 Maíz CBOT: 419 ¢/bu</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">📈 Fed: Tasas 3,50%–3,75% sin cambio</span>
-    <span class="strip-dot"></span>
-    <span class="strip-item">🇨🇴 Elecciones 2ª Vuelta: 21 Jun 2026</span>
+  <div class="header-title-bar">
+    <div class="header-title">&#128200; Boletín Económico Diario</div>
+    <div class="header-subtitle">Operaciones Portuarias</div>
   </div>
-</header>
+  <div class="teal-line"></div>
+</div>
 
-<!-- ════ MAIN ════ -->
-<main class="main">
+<!-- MAIN CONTENT -->
+<div class="container">
 
-  <!-- ── 1. INDICADORES CLAVE ── -->
-  <div class="section-header">
-    <div class="section-icon">📊</div>
-    <div class="section-title">I. Indicadores Clave de Mercado</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="indicators-grid">
-
-    <!-- TRM -->
-    <div class="indicator-card">
-      <div class="ind-label">TRM – Dólar Colombia</div>
-      <div class="ind-value">3.427</div>
-      <div class="ind-unit">COP / USD · Banco de la República</div>
-      <div class="ind-change change-down">▼ −48,65 &nbsp;(−1,40%)</div>
+  <!-- INDICADORES CLAVE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#9679;</span>
+      <h2>Indicadores Clave del Día — 17 Jun 2026</h2>
     </div>
-
-    <!-- Brent -->
-    <div class="indicator-card">
-      <div class="ind-label">Petróleo Brent (ICE)</div>
-      <div class="ind-value">79,24</div>
-      <div class="ind-unit">USD / barril</div>
-      <div class="ind-change change-up">▲ +0,28 &nbsp;(+0,35%) · Mín. 3 meses</div>
+    <div class="section-body">
+      <!-- Fila 1: Divisas y Energía -->
+      <div style="font-size:10px;font-weight:700;color:#13b0c4;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">&#9656; Divisas &amp; Energía</div>
+      <div class="indicators-grid" style="margin-bottom:16px;">
+        <div class="indicator-card highlight">
+          <div class="ind-label">TRM / USD · COP</div>
+          <div class="ind-val">$3,427.07</div>
+          <div class="ind-change down">&#9660; -$48.65 (-1.40%)</div>
+          <div class="ind-unit">Banco de la República · Mín. desde ene 2021</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Petróleo Brent</div>
+          <div class="ind-val">$78.80</div>
+          <div class="ind-change down">&#9660; -$0.07 (-0.09%)</div>
+          <div class="ind-unit">USD/barril · ICE Futures</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Petróleo WTI</div>
+          <div class="ind-val">$77.67</div>
+          <div class="ind-change down">&#9660; -2.22 (-2.8%)</div>
+          <div class="ind-unit">USD/barril · NYMEX</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Gas Natural</div>
+          <div class="ind-val">~$3.85</div>
+          <div class="ind-change neutral">&#9644; Tendencia lateral</div>
+          <div class="ind-unit">USD/MMBtu · Henry Hub</div>
+        </div>
+      </div>
+      <!-- Fila 2: Granos y Metálicos -->
+      <div style="font-size:10px;font-weight:700;color:#13b0c4;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">&#9656; Granos Chicago &amp; Minerales</div>
+      <div class="indicators-grid" style="margin-bottom:16px;">
+        <div class="indicator-card">
+          <div class="ind-label">Maíz Chicago</div>
+          <div class="ind-val">~$171</div>
+          <div class="ind-change down">&#9660; Presión bajista</div>
+          <div class="ind-unit">USD/t · CBOT (jun 2026)</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Soya Chicago</div>
+          <div class="ind-val">~$348</div>
+          <div class="ind-change down">&#9660; -4% en 4 semanas</div>
+          <div class="ind-unit">USD/t · CBOT</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Trigo Chicago</div>
+          <div class="ind-val">~$214</div>
+          <div class="ind-change down">&#9660; 7 ses. consecutivas</div>
+          <div class="ind-unit">USD/t · CBOT</div>
+        </div>
+        <div class="indicator-card highlight">
+          <div class="ind-label">Carbón Coquizable</div>
+          <div class="ind-val">$243.75</div>
+          <div class="ind-change down">&#9660; -0.10% (16 jun)</div>
+          <div class="ind-unit">USD/t · SGX · +40.69% a/a</div>
+        </div>
+      </div>
+      <!-- Fila 3: Bolsas -->
+      <div style="font-size:10px;font-weight:700;color:#13b0c4;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">&#9656; Principales Bolsas</div>
+      <div class="indicators-grid">
+        <div class="indicator-card">
+          <div class="ind-label">Dow Jones (DJI)</div>
+          <div class="ind-val">~42,850</div>
+          <div class="ind-change up">&#9650; Buscando máximos</div>
+          <div class="ind-unit">NYSE · Acuerdo EEUU-Irán</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">S&amp;P 500</div>
+          <div class="ind-val">~5,830</div>
+          <div class="ind-change neutral">&#9644; Mixto / recogida</div>
+          <div class="ind-unit">NYSE · Euforia moderada</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">Nasdaq Composite</div>
+          <div class="ind-val">~18,940</div>
+          <div class="ind-change neutral">&#9644; Ligera toma gcias.</div>
+          <div class="ind-unit">Nasdaq · SpaceX IPO</div>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-label">MSCI Colcap (BVC)</div>
+          <div class="ind-val">~2,262</div>
+          <div class="ind-change up">&#9650; +0.45% (10 jun)</div>
+          <div class="ind-unit">BVC · YTD +9.41%</div>
+        </div>
+      </div>
     </div>
-
-    <!-- WTI -->
-    <div class="indicator-card">
-      <div class="ind-label">Petróleo WTI (NYMEX)</div>
-      <div class="ind-value">76,52</div>
-      <div class="ind-unit">USD / barril</div>
-      <div class="ind-change change-up">▲ +0,47 &nbsp;(+0,62%)</div>
-    </div>
-
-    <!-- Gas Natural -->
-    <div class="indicator-card">
-      <div class="ind-label">Gas Natural (Henry Hub)</div>
-      <div class="ind-value">3,29</div>
-      <div class="ind-unit">USD / MMBtu</div>
-      <div class="ind-change change-up">▲ +0,05 &nbsp;(+1,55%)</div>
-    </div>
-
-    <!-- Maíz -->
-    <div class="indicator-card">
-      <div class="ind-label">Maíz (CBOT Chicago)</div>
-      <div class="ind-value">419</div>
-      <div class="ind-unit">¢ / bushel · Jul 2026</div>
-      <div class="ind-change change-down">▼ Presión bajista · USDA</div>
-    </div>
-
-    <!-- Soya -->
-    <div class="indicator-card">
-      <div class="ind-label">Soya (CBOT Chicago)</div>
-      <div class="ind-value">~1.030</div>
-      <div class="ind-unit">¢ / bushel · Jul 2026</div>
-      <div class="ind-change change-flat">— Estable / ligera baja</div>
-    </div>
-
-    <!-- Trigo -->
-    <div class="indicator-card">
-      <div class="ind-label">Trigo (CBOT Chicago)</div>
-      <div class="ind-value">~560</div>
-      <div class="ind-unit">¢ / bushel · Jul 2026</div>
-      <div class="ind-change change-down">▼ Presión oferta rusa</div>
-    </div>
-
-    <!-- Coque Metalúrgico -->
-    <div class="indicator-card">
-      <div class="ind-label">Coque Metalúrgico (Ref. China)</div>
-      <div class="ind-value">~215</div>
-      <div class="ind-unit">USD / tonelada</div>
-      <div class="ind-change change-flat">— Estable / demanda China</div>
-    </div>
-
-    <!-- S&P 500 -->
-    <div class="indicator-card">
-      <div class="ind-label">S&amp;P 500 (NYSE)</div>
-      <div class="ind-value">7.471</div>
-      <div class="ind-unit">puntos</div>
-      <div class="ind-change change-down">▼ −40,55 &nbsp;(−0,54%) · Postdecisión Fed</div>
-    </div>
-
-    <!-- Dow Jones -->
-    <div class="indicator-card">
-      <div class="ind-label">Dow Jones (NYSE)</div>
-      <div class="ind-value">51.884</div>
-      <div class="ind-unit">puntos</div>
-      <div class="ind-change change-down">▼ −115,50 &nbsp;(−0,22%)</div>
-    </div>
-
-    <!-- Nasdaq -->
-    <div class="indicator-card">
-      <div class="ind-label">Nasdaq Composite</div>
-      <div class="ind-value">26.251</div>
-      <div class="ind-unit">puntos</div>
-      <div class="ind-change change-down">▼ −124,87 &nbsp;(−0,47%)</div>
-    </div>
-
-    <!-- Oro -->
-    <div class="indicator-card">
-      <div class="ind-label">Oro (Spot)</div>
-      <div class="ind-value">4.242</div>
-      <div class="ind-unit">USD / onza troy</div>
-      <div class="ind-change change-down">▼ −2,60% · Reacción Fed</div>
-    </div>
-
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ── 2. CONTEXTO INTERNACIONAL ── -->
-  <div class="section-header">
-    <div class="section-icon">🌐</div>
-    <div class="section-title">II. Contexto Internacional por Categoría de Carga Portuaria</div>
-    <div class="section-line"></div>
+  <!-- CONTEXTO INTERNACIONAL -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#9679;</span>
+      <h2>Contexto Internacional por Categoría de Carga Portuaria</h2>
+    </div>
+    <div class="section-body">
+      <div class="context-grid">
+        <div class="context-card">
+          <h3>&#127807; Granel Limpio / Cereales</h3>
+          <p>Los mercados de granos en Chicago registran una semana bajista generalizada. El maíz se ha desplomado más de US$20/t en cuatro semanas ante récords de oferta global en EE.UU., Argentina y Brasil. El trigo europeo acumula siete sesiones de caídas y ya cotiza por debajo de los niveles de junio de 2025, presionado por mayores previsiones de cosecha en Rusia y escasa demanda internacional. La soya pierde un 4 % en el último mes aunque el aceite de soja actúa como soporte, alcanzando máximos de cuatro años. Esta tendencia bajista favorece importaciones más baratas de cereales vía PSP.</p>
+        </div>
+        <div class="context-card">
+          <h3>&#9883; Fertilizantes</h3>
+          <p>El mercado de fertilizantes muestra presión alcista derivada del alza previa en petróleo y gas natural —insumos clave para urea y amoniaco— durante el conflicto en Medio Oriente. Con el acuerdo provisional EEUU-Irán y la esperada reapertura del Estrecho de Ormuz, se proyecta moderación en precios de gas a partir de julio. No obstante, el encarecimiento de insumos ya impulsó al mercado a anticipar un posible recorte en áreas sembradas de maíz en EE.UU. en favor de la soja para la campaña 2026/27, lo cual podría ajustar la demanda global de nitrogenados en el corto plazo.</p>
+        </div>
+        <div class="context-card">
+          <h3>&#128740; Químicos y Líquidos</h3>
+          <p>El acuerdo provisional entre EEUU e Irán y la reapertura anunciada del Estrecho de Ormuz generan expectativas de normalización en el flujo de petroquímicos del Golfo Pérsico. Goldman Sachs rebajó su previsión del Brent para el Q4-2026 a USD 80/barril, lo que abaratará materias primas petroquímicas. La primera exportación de petroquímicos de Ecopetrol desde Buenaventura hacia Perú y Chile consolida la ruta del Pacífico colombiano para este tipo de carga. Precios de fletes para tanqueros químicos se mantienen elevados ante la incertidumbre residual sobre el cronograma de reapertura del estrecho.</p>
+        </div>
+        <div class="context-card">
+          <h3>&#9881; Metálicos</h3>
+          <p>El sector metálico refleja la dualidad geopolítica del momento: mientras el acuerdo EEUU-Irán reduce la prima de riesgo en energía, la demanda de acero en India sigue creciendo con plantas que expanden su capacidad hacia 15.9 Mt. El coque metalúrgico —insumo esencial en altos hornos— mantiene presiones de oferta por las restricciones de Indonesia. El carbón térmico cae a US$145/t desde máximos de tres años ante el acuerdo de paz. Para PSP, la carga de chatarra, palanquilla e importaciones de coque representa un segmento en plena efervescencia de cara al segundo semestre 2026.</p>
+        </div>
+        <div class="context-card">
+          <h3>&#128674; Carga General</h3>
+          <p>El movimiento de contenedores en Barranquilla crece por encima del 5 % en 2026, superando el ritmo de la economía. La proximidad de la segunda vuelta presidencial el 21 de junio mantiene expectativas de mejora en el clima de negocios e inversión si se consolida un gobierno pro-mercado. El inicio de operaciones del Puerto Antioquia en diciembre 2026, con nueve buques semanales iniciales, reafirma la competitividad del Caribe colombiano como epicentro logístico. Las importaciones por río Magdalena ganan tracción como alternativa logística eficiente para el interior del país.</p>
+        </div>
+        <div class="context-card">
+          <h3>&#128200; Indicadores Macro de Soporte</h3>
+          <p>La TRM en $3,427 (mínimo en 5.5 años) abarata importaciones pero presiona exportaciones de coque colombiano. Las tasas de interés en Colombia superarán el 12 % al cierre de 2026 según el consenso del mercado, encareciéndose el crédito para inversiones portuarias. El déficit fiscal proyectado entre 6.5 % y 7.1 % del PIB exige disciplina, mientras el PIB crecería entre 2.9 % y 3.5 % según Deutsche Bank y Oxford Economics. La segunda vuelta presidencial del 21 de junio es el evento catalítico clave para la confianza inversora en Colombia este año.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="context-grid">
-
-    <!-- GRANEL LIMPIO -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">🌾</span>
-        <span class="ctx-title">Granel Limpio — Cereales y Oleaginosas</span>
-        <span class="ctx-status status-bearish">Bajista</span>
+  <!-- COQUE METALÚRGICO ESPECIAL -->
+  <div class="coke-special">
+    <h2>&#9830; Análisis Profundo: Coque Metalúrgico &amp; Carbón Coquizable — Semana 17 Jun 2026</h2>
+    <div class="coke-grid">
+      <div class="coke-box" style="grid-column: span 2; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <div>
+          <div style="font-size:10px;color:#13b0c4;text-transform:uppercase;font-weight:700;letter-spacing:1px;margin-bottom:4px;">Carbón Coquizable SGX (Ref. Internacional)</div>
+          <div class="coke-price">$243.75 <span style="font-size:14px;">USD/t</span></div>
+          <div class="coke-price-sub">&#9660; -0.10% (16 Jun 2026) &nbsp;|&nbsp; &#9650; +40.69% vs. mismo período año anterior</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:11.5px;color:#c8dde8;line-height:1.65;">El carbón coquizable registra niveles notablemente superiores a los de 2025, impulsado por una confluencia de factores de oferta y demanda global que mantienen el mercado en tensión estructural durante esta semana.</div>
+        </div>
       </div>
-      <div class="context-card-body">
-        <p>El maíz <span class="ctx-highlight">cotiza en 419 ¢/bu</span> en Chicago con presión bajista sostenida: el USDA reportó el 67% de los cultivos en condición buena a excelente en EE.UU., reduciendo expectativas de escasez. La soya registra leves ajustes negativos por mayor oferta de Sudamérica. El trigo continúa bajo presión competitiva de la oferta rusa, que domina el mercado de exportación global. Para PSP, la caída de precios puede estimular mayores volúmenes de importación de cereales en el segundo semestre, favoreciendo operaciones de granel en el puerto de Barranquilla. El fenómeno de El Niño previsto para el segundo semestre de 2026 en Colombia podría impulsar demanda adicional de importaciones de maíz y soya para la industria avícola y porcícola nacional.</p>
+      <div class="coke-box">
+        <h4>&#127758; Exportadores: Oferta &amp; Tendencias</h4>
+        <p><strong style="color:#fff;">Australia:</strong> Principal exportador de carbón de coque duro (HCC). BHP opera flotas autónomas para mejorar productividad. Las exportaciones australianas son base de referencia para contratos globales. China levantó el veto en 2023 y ya es el mayor comprador spot de carbón australiano, compitiendo directamente con India.<br><br><strong style="color:#fff;">Indonesia:</strong> El Presidente Prabowo anunció en mayo 2026 que todas las exportaciones de carbón —incluyendo carbón coquizable— deben canalizarse a través de la empresa estatal Danantara Sumberdaya Indonesia (DSI) desde el 1 de junio. Se aplica nuevo arancel de exportación desde abril 2026 y mandato de retención del 100 % de divisas en bancos estatales. El país reduce su producción objetivo de 790 Mt a 600 Mt en 2026 (-24 %). Esta restricción de oferta impulsó los precios del carbón térmico a máximos de 3 años y crea incertidumbre sobre contratos spot con importadores asiáticos.<br><br><strong style="color:#fff;">China:</strong> Aunque es mayor productor doméstico de coque, participa activamente en el mercado spot de carbón coquizable como comprador y árbitrador. Sus políticas macro, movimientos en la DCE (Dalian) y ajustes de capacidad en acero influyen decisivamente en el precio mundial.</p>
       </div>
-    </div>
-
-    <!-- COQUE METALÚRGICO -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">⛏</span>
-        <span class="ctx-title">Coque Metalúrgico y Carbón</span>
-        <span class="ctx-status status-neutral">Neutral</span>
+      <div class="coke-box">
+        <h4>&#127758; Importadores: Demanda &amp; Factores</h4>
+        <p><strong style="color:#fff;">India:</strong> El motor de crecimiento más dinámico. JSPL comprometió ampliar capacidad de acero crudo de 9.6 Mt a 15.9 Mt para mediados de 2026. Nuevos hornos de coque sumados a la expansión de Shyam Metallics intensifican la demanda de carbón coquizable. India es el principal destino de las exportaciones de coque colombiano —1.59 Mt en 2023— y su apetito comprador es creciente en 2026.<br><br><strong style="color:#fff;">Brasil:</strong> Segundo destino de coque colombiano (1.68 Mt en 2023). La expansión de su industria siderúrgica mantiene demanda sostenida. La devaluación del real frente al dólar puede moderar compras spot en H2-2026.<br><br><strong style="color:#fff;">Factores de mercado esta semana:</strong> (1) Acuerdo provisional EEUU-Irán y reapertura del Estrecho de Ormuz reducen prima de riesgo geopolítico en energía, moderando precios de carbón térmico, pero la incertidumbre sobre las restricciones indonesias mantiene el mercado de coquizable en terreno elevado. (2) La TRM colombiana en $3,427 —mínimo desde 2021— comprime márgenes de los exportadores colombianos de coque, que reciben menos pesos por dólar. (3) Las restricciones indonesias de oferta abren oportunidades para que Colombia —3er exportador mundial de coque— capture mayor cuota de mercado en Asia, especialmente en India y Brasil.</p>
       </div>
-      <div class="context-card-body">
-        <p>El coque metalúrgico de referencia se mantiene en torno a <span class="ctx-highlight">$215 USD/t</span>, sostenido por la demanda siderúrgica china que sigue siendo el factor determinante del precio global. El operador XM de Colombia ha confirmado que el carbón mantiene un <span class="ctx-highlight">rol importante en el consumo de generación térmica</span> local. La desaceleración de la economía global al 2,8% proyectada por la OCDE modera las perspectivas de demanda industrial. Para el puerto de Palermo, la estabilidad en los precios del coque representa un escenario de operaciones regulares sin sobresaltos para los próximos meses, aunque la caída del petróleo genera presión a mediano plazo sobre inversiones en minería.</p>
+      <div class="coke-box">
+        <h4>&#128666; Impacto en Importaciones de Coque por PSP Barranquilla</h4>
+        <p>Las importaciones de coque metalúrgico vía PSP Barranquilla se ven afectadas por múltiples vectores simultáneos esta semana. La apreciación del peso (TRM $3,427) abarata las importaciones en términos de pesos colombianos, reduciendo el costo CIF para las siderúrgicas y fundidoras colombianas que reciben coque por el puerto. Sin embargo, el precio FOB de referencia internacional sigue elevado (+40.69% interanual). El mercado global de coque metalúrgico opera con un déficit de oferta estructural dado el rol irremplazable del coque en los altos hornos. Colombia, como tercer exportador mundial, genera flujo de buques Capesize y Panamax que también impactan las operaciones de cabotaje y consolidación en el terminal de Palermo. PSP debe anticipar posibles retrasos de embarques indonesios en el tercer trimestre 2026, lo que fortalece la posición del coque colombiano de exportación y puede aumentar la captación de buques con origen en Boyacá/Cundinamarca vía Barranquilla.</p>
       </div>
-    </div>
-
-    <!-- FERTILIZANTES -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">🌱</span>
-        <span class="ctx-title">Fertilizantes — Urea, DAP, KCl</span>
-        <span class="ctx-status status-mixed">Mixto</span>
-      </div>
-      <div class="context-card-body">
-        <p>El mercado internacional de fertilizantes <span class="ctx-highlight">inició 2026 a la baja</span> en la mayoría de nutrientes, con excepción de la urea que se mantiene firme impulsada por las restricciones de exportación chinas. En 2025, los precios de urea, DAP y KCl subieron 25%, 22% y 18% respectivamente. Colombia importó <span class="ctx-highlight">2,13 millones de toneladas</span> en 2024, con China consolidándose como principal proveedor. El escenario de El Niño en el segundo semestre podría modificar la demanda agrícola nacional hacia mayor fósforo y potasio. Para PSP, los flujos de importación de fertilizantes por Barranquilla siguen siendo un renglón estratégico que podría incrementarse por la fase agrícola del primer semestre y contingencias climáticas.</p>
+      <div class="coke-box">
+        <h4>&#128200; Perspectiva de Precios y Señal para PSP</h4>
+        <p>El carbón coquizable cotiza cerca de $243/t, +40.69% interanual. Analistas de ING previenen que si las negociaciones nucleares con Irán no avanzan, el mercado de energía podría revertir y empujar coal prices hasta $120-130/bbl equivalente. En el escenario base, con acuerdo firmado el 19 de junio en Ginebra, se esperaría moderación gradual de precios de carbón térmico, pero el coque metalúrgico mantiene sus fundamentos por demanda estructural de acero en India y restricciones de oferta Indonesia. <strong style="color:#13b0c4;">Señal clave para PSP:</strong> Preparar capacidad de almacenamiento y logística para mayor movimiento de coque importado H2-2026, con enfoque en eficiencia de descargue para capturar tráfico de coque de acerías locales beneficiadas por la TRM baja. Monitorear la política DSI de Indonesia para ajustar previsiones de carga Panamax en los próximos 90 días.</p>
       </div>
     </div>
-
-    <!-- QUÍMICOS Y LÍQUIDOS -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">⚗️</span>
-        <span class="ctx-title">Químicos y Líquidos a Granel</span>
-        <span class="ctx-status status-neutral">Estable</span>
-      </div>
-      <div class="context-card-body">
-        <p>La caída del <span class="ctx-highlight">petróleo cerca de mínimos de 3 meses</span> ante el acuerdo EE.UU.-Irán reduce los costos de materias primas petroquímicas, lo que podría abaratar los derivados del petróleo, insumos para la industria química y los precios de fletes para graneles líquidos. El GLP cobra relevancia: Colombia dejó de ser autosuficiente y las importaciones representan hoy entre el <span class="ctx-highlight">42% y el 45%</span> de la demanda total nacional. El mantenimiento de la regasificadora SPEC de Cartagena (30 jul – 3 ago) puede generar tensiones temporales en el suministro de gas natural en la costa Caribe, con implicaciones logísticas para los terminales portuarios de la región.</p>
-      </div>
-    </div>
-
-    <!-- METÁLICOS -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">🏗</span>
-        <span class="ctx-title">Carga Metálica — Acero, Hierro, Aluminio</span>
-        <span class="ctx-status status-bearish">Moderado</span>
-      </div>
-      <div class="context-card-body">
-        <p>El oro <span class="ctx-highlight">cae 2,60%</span> tras la decisión de la Fed de mantener tasas, lo que fortalece el dólar. La desaceleración económica global proyectada por la OCDE al <span class="ctx-highlight">2,8% en 2026</span> frente al 3,4% de 2025 modera las perspectivas de demanda de metales industriales. La inversión en infraestructura en Colombia cayó al <span class="ctx-highlight">1% del PIB</span>, el nivel más bajo en una década, lo que limita la demanda doméstica de materiales metálicos. Sin embargo, el megaproyecto férreo La Dorada–Chiriguaná (526 km) en fase constructiva puede generar nuevos flujos de carga metálica hacia la zona de influencia del río Magdalena y el puerto.</p>
-      </div>
-    </div>
-
-    <!-- CARGA GENERAL -->
-    <div class="context-card">
-      <div class="context-card-header">
-        <span class="ctx-icon">📦</span>
-        <span class="ctx-title">Carga General y Contenedores</span>
-        <span class="ctx-status status-bullish">Favorable</span>
-      </div>
-      <div class="context-card-body">
-        <p>La TRM en <span class="ctx-highlight">$3.427 COP/USD</span>, mínimo de más de 5 años, abarata las importaciones y puede estimular mayores volúmenes de carga general ingresante por los puertos colombianos. La apreciación del peso responde a expectativas de cambio político favorable (elecciones del 21 de junio) y flujos de inversión extranjera en TES. Essity/Grupo Familia opera a Colombia como <span class="ctx-highlight">plataforma de exportación hacia más de 30 países</span> desde su centro de distribución automatizado en Rionegro, generando potencial de carga de exportación manufacturera. El Deutsche Bank proyecta el PIB de Colombia en <span class="ctx-highlight">2,9%</span> para 2026, sustentando la demanda de importaciones de bienes intermedios y de consumo.</p>
-      </div>
-    </div>
-
   </div>
 
-  <div class="divider"></div>
+  <!-- NOTICIAS -->
+  <div style="font-size:13px;font-weight:800;color:#0a2540;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;padding-left:2px;">&#128240; Noticias Relevantes del Día</div>
 
-  <!-- ── 3. NOTICIAS ── -->
-  <div class="section-header">
-    <div class="section-icon">📰</div>
-    <div class="section-title">III. Monitor de Noticias — Fuente: Valora Analitik</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="news-categories">
-
-    <!-- INFRAESTRUCTURA -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">🏗</span>
-        <span class="news-cat-title">Infraestructura</span>
+  <!-- INFRAESTRUCTURA + PETROLERAS -->
+  <div class="news-grid" style="margin-bottom:20px;">
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#127959;</span>
+        <h3>Infraestructura Portuaria &amp; Transporte</h3>
       </div>
       <div class="news-list">
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/arranca-obras-prioritarias-megaproyecto-del-tren-la-dorada-chiriguana/" target="_blank" rel="noopener">Arrancan obras prioritarias del megaproyecto del tren La Dorada – Chiriguaná (526 km), columna vertebral del sistema férreo colombiano</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 12, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/puertos-vias-y-aeropuertos-aceleran-transicion-energetica-ante-riesgo-de-crisis-electrica/" target="_blank">Puertos, vías y aeropuertos aceleran transición energética ante riesgo de crisis eléctrica en Colombia — Ricardo Román (PSP) destacó que el Caribe movió más de 140 Mt en 2025 y concentra el 80% del movimiento portuario nacional.</a>
+            <span class="source-tag">&#128279; Valora Analitik · May 2026</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/se-acaba-megaproyecto-de-importante-via-a-las-afueras-de-bogota-esta-es-la-historia-de-la-app-cuyo-contrato-fue-liquidado/" target="_blank" rel="noopener">Se liquidó el contrato del Perimetral del Oriente de Bogotá (POB): ANI inicia proceso de reversión de vías a Invías por laudo internacional</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 11, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/megaproyecto-tren-interoceanico-de-petro-disparo-precio-cerca-100-billones/" target="_blank">Megaproyecto tren interoceánico de Petro se disparó de precio: se acerca a $100 billones — incluiría dos complejos portuarios en el Chocó con almacenamiento de contenedores.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/inversion-en-infraestructura-en-colombia-llego-a-su-nivel-mas-bajo-en-una-decada-apenas-alcanza-el-1-del-pib/" target="_blank" rel="noopener">Inversión en infraestructura en Colombia llega a mínimo de una década: apenas el 1% del PIB; universidades exigen hoja de ruta urgente</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">May 26, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/puerto-de-barranquilla-dragado-en-2026/" target="_blank">Puerto de Barranquilla tendría recursos para dragado en 2026: ~$116.000 millones para mantenimiento de los 22 km del canal de acceso hasta diciembre 2026.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Nov 2025</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/colombia-ha-incorporado-al-sistema-menos-del-7-de-la-energia-que-preve-para-todo-2026/" target="_blank" rel="noopener">Colombia incorporó menos del 7% de la energía proyectada para 2026; XM alerta por insuficiencia de infraestructura y fenómeno de El Niño</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 12, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/entrevista-colombia-es-la-estrella-de-investment-management-revela-interes-en-proyectos-de-infraestructura-y-activos-alternativos/" target="_blank">Colombia es la "estrella" de Investment Management de Sura: revela interés en infraestructura portuaria, aeroportuaria y activos alternativos para la región.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- PETROLERAS -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">🛢</span>
-        <span class="news-cat-title">Petroleras</span>
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#128167;</span>
+        <h3>Sector Petrolero &amp; Energético</h3>
       </div>
       <div class="news-list">
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/colombia-producira-cada-vez-menos-petroleo-pese-a-que-precios-internacionales-estarian-al-alza/" target="_blank" rel="noopener">Colombia producirá cada vez menos petróleo: el MFMP proyecta caída de 746.000 a 731.000 barriles/día en 2026; baja continuaría a 681.000 en 2028–2037</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 16, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/ecopetrol-y-frontera-energy-obtuvieron-una-licencia-de-la-ani-para-avanzar-con-la-regasificadora-de-puerto-bahia-en-cartagena/" target="_blank">Ecopetrol y Frontera Energy obtienen licencia ANI para la regasificadora de Puerto Bahía (Cartagena): aportaría hasta 300 GBtu/día de gas importado, reduciendo riesgo de déficit.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/btg-pactual-eleva-precio-objetivo-ecopetrol/" target="_blank" rel="noopener">BTG Pactual eleva el precio objetivo del ADR de Ecopetrol ante menor riesgo país por expectativas electorales; reitera recomendación Neutral</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 03, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/aumento-en-la-eficiencia-de-produccion-y-baja-en-impuestos-asi-se-recuperaria-ecopetrol-en-un-proximo-gobierno/" target="_blank">Eficiencia de producción y baja en impuestos: así se recuperaría Ecopetrol bajo un próximo gobierno — impuesto de renta proyectado en $11.3 billones para 2026.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/citi-rebajo-recomendacion-ecopetrol/" target="_blank" rel="noopener">Citi rebaja recomendación de Ecopetrol a Neutral de Alto Riesgo pero eleva precio objetivo; abre posibilidad de que Ecopetrol opere en Venezuela</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 02, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/btg-pactual-eleva-precio-objetivo-ecopetrol/" target="_blank">BTG Pactual eleva precio objetivo del ADR de Ecopetrol ante menor riesgo país por elecciones presidenciales: cotiza a múltiplo de 4.4x EV/Ebitda 2026 con 10 palancas de valor identificadas.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
         <div class="news-item">
-          <a href="https://www.valoraanalitik.com/la-nueva-empresa-colombiana-que-esta-buscando-negocios-de-petroleo-en-venezuela/" target="_blank" rel="noopener">Independence Drilling, contratista colombiano, busca negocios de petróleo en Venezuela tras captura de Maduro; sector local cae 40% en exploración desde 2022</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 09, 2026</span></div>
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/deficit-de-gas-en-colombia-podria-llegar-hasta-39-de-la-demanda-en-2026/" target="_blank">Déficit de gas en Colombia podría llegar hasta 39% de la demanda en 2026: Moody's advierte incremento de 34% en el precio del gas desde junio, aumentando dependencia de GNL importado.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- MACROECONÓMICAS -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">📈</span>
-        <span class="news-cat-title">Macroeconómicas Colombia</span>
-      </div>
-      <div class="news-list">
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/nuevo-informe-ocde-alerta-por-desaceleracion-economica-en-colombia-y-repunte-de-inflacion-advierte-debilidad-fiscal/" target="_blank" rel="noopener">OCDE alerta: inflación en Colombia proyectada al 6,1% en 2026; tasas de política podrían subir al 12,75% en el tercer trimestre</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 03, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/deutsche-bank-situacion-fiscal-sera-un-desafio-para-el-proximo-gobierno-con-un-desbalance-del-67-del-pib/" target="_blank" rel="noopener">Deutsche Bank: PIB de Colombia crecerá 2,9% en 2026; déficit fiscal llega al 6,7% del PIB y será desafío crítico para el próximo gobierno</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 02, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/oxford-economics-abelardo-generaria-menos-riesgos-economicos-y-mas-estabilidad-fiscal-a-colombia/" target="_blank" rel="noopener">Oxford Economics: ventaja de De la Espriella en primera vuelta reduce riesgos económicos; peso colombiano se apreció 4% en la semana post-elecciones</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 02, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/deterioro-del-deficit-en-cuenta-corriente-en-colombia-revive-el-riesgo-de-acceder-a-financiamiento-externo/" target="_blank" rel="noopener">BanRep proyecta déficit en cuenta corriente del 2,5% del PIB para 2026; analistas de BTG Pactual advierten vulnerabilidad si el financiamiento externo se debilita</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">May 23, 2026</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- INTERNACIONALES -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">🌍</span>
-        <span class="news-cat-title">Económicas Internacionales</span>
-      </div>
-      <div class="news-list">
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/nuevo-informe-ocde-alerta-por-desaceleracion-economica-en-colombia-y-repunte-de-inflacion-advierte-debilidad-fiscal/" target="_blank" rel="noopener">OCDE: crecimiento global se ralentizará al 2,8% en 2026 vs. 3,4% en 2025; conflicto en Oriente Medio genera desaceleración y repunte en costos energéticos</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik / OCDE</span><span class="news-date">Jun 03, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">Brent cae a mínimos de 3 meses ante acuerdo EE.UU.-Irán: más de 100 buques cargados podrían salir del Golfo Pérsico; IEA advierte posible superávit global de oferta</a>
-          <div class="news-meta"><span class="news-source">Trading Economics / Reuters</span><span class="news-date">Jun 17, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/colombia-empeora-en-indice-de-libertad-economica-2026-hay-limitaciones-de-apertura-a-mercados/" target="_blank" rel="noopener">Heritage Foundation: Colombia retrocede al puesto 91 en el Índice de Libertad Económica 2026; sigue clasificada como «mayormente no libre»</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 16, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.excelsior.com.mx/internacional/fed-mantiene-tasas-interes-y-anticipa-posible-subida" target="_blank" rel="noopener">Fed bajo Warsh mantiene tasas en 3,50%–3,75%; eleva proyección de inflación al 3,6% y abre puerta a posible alza en 2026 · 9 de 18 miembros la contemplan</a>
-          <div class="news-meta"><span class="news-source">Reuters / Excélsior</span><span class="news-date">Jun 17, 2026</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EMPRESARIALES -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">🏢</span>
-        <span class="news-cat-title">Empresariales</span>
-      </div>
-      <div class="news-list">
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/presencia-multinacional-essity-en-colombia/" target="_blank" rel="noopener">Essity/Grupo Familia convierte a Colombia en hub de producción y exportación para más de 30 países; su CD automatizado en Rionegro es el más alto de LATAM</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 16, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/entrevista-colombia-es-la-estrella-de-investment-management-revela-interes-en-proyectos-de-infraestructura-y-activos-alternativos/" target="_blank" rel="noopener">Sura Investments: Colombia es la «estrella» de su portafolio; administra US$6.600M en el país e identifica oportunidades en infraestructura portuaria y aeroportuaria</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 14, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/el-glp-gana-terreno-en-colombia-demanda-crece-26-y-el-sector-reclama-un-lugar-en-la-conversacion-energetica/" target="_blank" rel="noopener">GLP gana terreno en Colombia: demanda creció 26% y las importaciones ya representan el 42–45% del total; Puerto Bahía Gasco avanza en operación temprana</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 17, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/gobierno-fija-medidas-para-suministro-de-gas-durante-mantenimiento-de-spec/" target="_blank" rel="noopener">Gobierno expide Resolución 40267 con medidas para garantizar suministro de gas durante mantenimiento de regasificadora SPEC (30 jul – 3 ago 2026)</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 13, 2026</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MERCADOS FINANCIEROS -->
-    <div class="news-category">
-      <div class="news-cat-header">
-        <span class="news-cat-icon">💹</span>
-        <span class="news-cat-title">Mercados Financieros</span>
-      </div>
-      <div class="news-list">
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/inversionistas-extranjeros-superan-a-fondos-de-pensiones-y-se-consolidan-como-los-mayores-acumuladores-de-tes/" target="_blank" rel="noopener">Inversionistas extranjeros superan a fondos de pensiones y acumulan TES por apetito sin precedentes; exposición vía NDF creció de $4B a $50B desde 2024</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 15, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/tendencias-que-marcaran-el-futuro-de-america-latina-segun-sura-investments/" target="_blank" rel="noopener">Sura Investments: tres tendencias marcarán el futuro de LATAM — solidez fiscal, mercado de capitales en expansión y activos alternativos en auge</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik</span><span class="news-date">Jun 15, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.bolsamania.com/en-directo/mercados/reunion-junio-2026-reserva-federal.html" target="_blank" rel="noopener">Wall Street cae y dólar se fortalece tras decisión de la Fed: S&P 500 −0,54%, Nasdaq −0,47%; oro pierde 2,6%; WTI baja a $76 y Brent a $78,89</a>
-          <div class="news-meta"><span class="news-source">Bolsamanía / Bloomberg</span><span class="news-date">Jun 17, 2026</span></div>
-        </div>
-        <div class="news-item">
-          <a href="https://www.valoraanalitik.com/colombia-empeora-en-indice-de-libertad-economica-2026-hay-limitaciones-de-apertura-a-mercados/" target="_blank" rel="noopener">TRM alcanza mínimo de más de 5 años en $3.427 COP/USD; analistas proyectan que el peso se consolide si De la Espriella gana la segunda vuelta el 21 de junio</a>
-          <div class="news-meta"><span class="news-source">Valora Analitik / BanRep</span><span class="news-date">Jun 17, 2026</span></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ── 4. IMPLICACIONES ESTRATÉGICAS ── -->
-  <div class="section-header">
-    <div class="section-icon">🎯</div>
-    <div class="section-title">IV. Implicaciones Estratégicas para PSP Barranquilla</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="implications-grid">
-
-    <div class="impl-card oportunidad">
-      <div class="impl-tag tag-oportunidad">✅ Oportunidad</div>
-      <div class="impl-title">Incremento potencial de carga de importación de cereales</div>
-      <div class="impl-text">La caída sostenida de la TRM a $3.427 COP/USD (mínimo de 5 años) abarata directamente las importaciones denominadas en dólares. La presión bajista en maíz, soya y trigo en Chicago, combinada con la proyección del fenómeno El Niño en el segundo semestre, anticipa una mayor demanda de importaciones agropecuarias. PSP debe preparar capacidad operativa para recibir mayores volúmenes de granel limpio en el segundo semestre de 2026.</div>
+  <!-- MACROECONÓMICAS + INTERNACIONALES -->
+  <div class="news-grid" style="margin-bottom:20px;">
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#127981;</span>
+        <h3>Macroeconómicas Colombia</h3>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/moodys-elecciones-en-colombia-seran-un-punto-de-inflexion-para-la-economia-y-la-confianza-del-mercado/" target="_blank">Moody's: Elecciones del 21 de junio serán punto de inflexión para Colombia — candidatos De la Espriella y Cepeda presentan rutas marcadamente diferentes de política fiscal y energética.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/deutsche-bank-situacion-fiscal-sera-un-desafio-para-el-proximo-gobierno-con-un-desbalance-del-67-del-pib/" target="_blank">Deutsche Bank: Situación fiscal será desafío clave con desbalance del 6.7% del PIB — PIB nominal colombiano llegaría a US$542.000 millones en 2026 y tasa podría subir a 12.50%.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/goldman-sachs-colombia-alza-tasas-inflacion/" target="_blank">Goldman Sachs prevé que Colombia será la única gran economía de LatAm en subir tasas en 2026 — ciclo de alzas de al menos 150 puntos básicos, llevando la tasa hasta 10.75%.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Ene 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/colombia-producira-cada-vez-menos-petroleo-pese-a-que-precios-internacionales-estarian-al-alza/" target="_blank">Colombia producirá cada vez menos petróleo en 2026-2037: producción baja de 746.000 a 731.000 bd en 2026, pese a que el MFMP proyecta Brent en US$85.5/barril para el año.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="impl-card alerta">
-      <div class="impl-tag tag-alerta">⚠️ Alerta</div>
-      <div class="impl-title">Caída del petróleo impacta ingresos fiscales y presupuesto de obras</div>
-      <div class="impl-text">El Brent en $79/bbl, contra la proyección del MFMP de $85,5/bbl para 2026, representa una brecha significativa en los ingresos del Gobierno Nacional. La producción petrolera colombiana cae a 731.000 barriles/día. Esto puede generar restricciones presupuestales para obras de infraestructura portuaria y vial financiadas con regalías, afectando proyectos de conectividad que benefician a Barranquilla y el Caribe.</div>
-    </div>
-
-    <div class="impl-card estrategia">
-      <div class="impl-tag tag-estrategia">🔵 Estrategia</div>
-      <div class="impl-title">Posicionamiento ante el nuevo ciclo de política energética post-electoral</div>
-      <div class="impl-text">Con la segunda vuelta presidencial el 21 de junio, el resultado determinará la política de hidrocarburos de Colombia. Una victoria de De la Espriella implicaría nuevas rondas petroleras, posible apertura al fracking y reactivación de la IED en el sector minero-energético, incrementando potencialmente el movimiento de coque, carbón y maquinaria pesada por puertos del Caribe. PSP debe monitorear el escenario y preparar propuestas comerciales anticipadas.</div>
-    </div>
-
-    <div class="impl-card monitoreo">
-      <div class="impl-tag tag-monitoreo">🟡 Monitoreo</div>
-      <div class="impl-title">Mantenimiento de SPEC y abastecimiento energético regional</div>
-      <div class="impl-text">El mantenimiento programado de la regasificadora SPEC (30 jul – 3 ago) puede generar tensiones temporales en el suministro de gas en la Costa Caribe. PSP debe verificar el impacto en los costos energéticos operativos del terminal y la disponibilidad de gas para los clientes industriales del área de influencia. La Resolución 40267 del MinEnergía establece mecanismos de contingencia que deben ser monitoreados activamente.</div>
-    </div>
-
-    <div class="impl-card oportunidad">
-      <div class="impl-tag tag-oportunidad">✅ Oportunidad</div>
-      <div class="impl-title">Tren La Dorada – Chiriguaná como corredor de carga estratégico</div>
-      <div class="impl-text">El inicio de obras del megaproyecto férreo de 526 km, primera APP ferroviaria de Colombia, abre perspectivas de largo plazo para la transferencia modal de carga hacia el río Magdalena y los puertos del Caribe. PSP debe posicionarse desde ahora ante la ANI y los operadores logísticos como terminal de referencia para el corredor fluvial-ferroviario, particularmente para carbón, coque y granel agropecuario. La conectividad generada podría incrementar significativamente las toneladas movilizadas en la próxima década.</div>
-    </div>
-
-    <div class="impl-card alerta">
-      <div class="impl-tag tag-alerta">⚠️ Alerta</div>
-      <div class="impl-title">Fortalecimiento del dólar post-Fed comprime márgenes en divisas</div>
-      <div class="impl-text">La decisión de la Fed bajo Kevin Warsh de señalar posibles alzas de tasas fortalece el dólar globalmente (DXY +0,60%), lo que puede revertir parcialmente la apreciación del peso colombiano si se consolida. PSP debe gestionar su exposición cambiaria en contratos denominados en dólares y monitorear la volatilidad post-electoral. El diferencial de tasas Colombia–EE.UU. (11,25% vs. 3,50%–3,75%) sigue siendo un ancla favorable para la TRM en el corto plazo.</div>
-    </div>
-
-    <div class="impl-card estrategia">
-      <div class="impl-tag tag-estrategia">🔵 Estrategia</div>
-      <div class="impl-title">Capitalizar el crecimiento de importaciones de GLP y fertilizantes</div>
-      <div class="impl-text">Con la demanda de GLP creciendo el 26% y las importaciones representando el 42–45% del suministro nacional, y con Colombia importando más de 2 millones de toneladas de fertilizantes anuales, PSP debe evaluar la ampliación o especialización de su capacidad de manejo de líquidos y graneles químicos. El posicionamiento de Puerto Bahía Gasco y nuevos actores en el segmento GLP señala un mercado en expansión que puede generar flujos incrementales de carga especializada hacia la Costa Caribe.</div>
-    </div>
-
-    <div class="impl-card monitoreo">
-      <div class="impl-tag tag-monitoreo">🟡 Monitoreo</div>
-      <div class="impl-title">Acuerdo EE.UU.-Irán y reconfiguración de rutas navieras</div>
-      <div class="impl-text">La reapertura del Estrecho de Ormuz prevista tras el acuerdo firmado el viernes en Ginebra liberará más de 100 buques cargados y reactivará las rutas de exportación iraní, aumentando la oferta global de crudo y presionando a la baja los fletes energéticos a largo plazo. Sin embargo, la IEA advierte posible superávit de oferta en 2027 con +8 Mb/d de suministro frente a +2 Mb/d de demanda. PSP debe monitorear el impacto en los patrones de navegación por el Atlántico y el Caribe, y en los fletes de buques tanqueros que escalan en Colombia.</div>
-    </div>
-
-  </div>
-
-</main>
-
-<!-- ════ FOOTER ════ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <div class="footer-brand">Palermo Sociedad Portuaria · Grupo Coremar</div>
-      <p>
-        Este boletín es producido por el sistema de Inteligencia de Mercados de PSP para uso interno exclusivo.<br>
-        Las cifras de indicadores son de referencia al momento de generación y pueden variar. Fuentes: Banco de la República,<br>
-        Superintendencia Financiera, Trading Economics, Investing.com, Valora Analitik, Reuters, Bloomberg, OCDE.<br>
-        La información contenida no constituye asesoría de inversión ni recomendación comercial vinculante.
-      </p>
-    </div>
-    <div class="footer-right">
-      <p>
-        <strong style="color: var(--teal);">Edición 4</strong><br>
-        Miércoles, 17 de junio de 2026<br>
-        16:18 COT (UTC−5)<br>
-        Barranquilla, Colombia<br>
-        <span style="color:var(--teal); font-weight:600;">psp.inteligencia@coremar.com.co</span>
-      </p>
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#127758;</span>
+        <h3>Económicas Internacionales</h3>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.preciopetroleo.net/" target="_blank">Acuerdo provisional EEUU-Irán desploma petróleo más de 5%: Brent cae a $78.8 y WTI a $77.67 tras anuncio de firma en Ginebra el 19 de junio y reapertura del Estrecho de Ormuz.</a>
+            <span class="source-tag">&#128279; PrecioPetroleo.net / Reuters · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.lexology.com/library/detail.aspx?g=103ff22e-019e-48e3-877a-a7ea7d683f60" target="_blank">Indonesia reforma su régimen de exportación: carbón, palma y ferroaleaciones deben canalizarse por empresa estatal DSI desde junio 2026 — impacto global en cadenas de suministro de carbón.</a>
+            <span class="source-tag">&#128279; Lexology / Mining Weekly · May-Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.miningweekly.com/article/indonesia-coal-export-shake-up-rattles-miners-traders-2026-05-22" target="_blank">Indonesia coal export shake-up "rattles miners and traders": medida eleva costos para importadores y genera incertidumbre sobre contratos existentes; Japón y Corea del Sur más vulnerables.</a>
+            <span class="source-tag">&#128279; Mining Weekly · May 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.agronewscastillayleon.com/mercados-mundiales-cereales-paris-chicago-junio-2026-trigo-maiz-soja-colza" target="_blank">Trigo, maíz, soja y colza caen en mercados mundiales: semana bajista marcada por cosechas abundantes, escasa demanda internacional y condiciones climáticas favorables en el hemisferio norte.</a>
+            <span class="source-tag">&#128279; AgroNews Castilla y León · Jun 2026</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
+
+  <!-- EMPRESARIALES + MERCADOS FINANCIEROS -->
+  <div class="news-grid" style="margin-bottom:20px;">
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#127970;</span>
+        <h3>Noticias Empresariales</h3>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/la-multinacional-que-convirtio-a-colombia-en-su-centro-de-produccion-para-mas-de-30-paises/" target="_blank">Essity (ex Grupo Familia) convierte a Colombia en hub de producción para más de 30 países: nuevo centro logístico automatizado mejora 33% la eficiencia de despachos y exporta a toda América Latina.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/inflacion-alta-inversion-a-la-baja-y-regulacion-cada-vez-mayor-doing-business-expone-los-retos-de-colombia-para-mantener-su-atractivo/" target="_blank">Informe Doing Business Colombia 2026 (PwC): inflación alta, IED a la baja y mayor regulación amenazan el atractivo inversor — tarifa de renta corporativa del 35% más sobretasa del 5%.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/valora-analitik-mckinsey-company-alianza/" target="_blank">Valora Analitik y McKinsey &amp; Company anuncian alianza estratégica para fortalecer el ecosistema de información económica y empresarial en Colombia y América Latina.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/xposible-colsubsidio-2026-abre-la-convocatoria-para-reconocer-las-mejores-iniciativas-empresariales-en-sostenibilidad/" target="_blank">Colsubsidio abre Xposible 2026: convocatoria para reconocer las 30 mejores iniciativas empresariales en sostenibilidad social, ambiental y económica. Cierre el 7 de agosto.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="news-section">
+      <div class="news-section-header">
+        <span class="icon">&#128201;</span>
+        <h3>Mercados Financieros</h3>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/acciones-de-ecopetrol-vuelven-a-tocar-niveles-de-3-000-despues-de-cuatro-anos/" target="_blank">BVC Colombia: Colcap en 2,262 puntos con variación +0.45% (10 jun) — YTD +9.41% acumulado; Ecopetrol toca niveles de $3.000 por primera vez en cuatro años, impulsada por expectativa electoral.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-eeuu" target="_blank">Wall Street mixto: acuerdo EEUU-Irán "desata euforia" pero se modera — Dow Jones busca máximos históricos; S&P 500 y Nasdaq amagan con recogida de ganancias tras fuerte rally inicial.</a>
+            <span class="source-tag">&#128279; Estrategias de Inversión · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.valoraanalitik.com/" target="_blank">Tasas de interés en Colombia terminarán 2026 por encima del 12% según proyecciones del mercado — El Banco Central Europeo elevaría su tipo de depósito en 25 pb hasta el 2.25%, ampliando divergencia monetaria global.</a>
+            <span class="source-tag">&#128279; Valora Analitik · Jun 2026</span>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-dot"></div>
+          <div>
+            <a href="https://www.colombia.com/actualidad/economia/precio-del-dolar-hoy-en-colombia-miercoles-17-de-junio-588121" target="_blank">TRM cierra en mínimo histórico $3,427.07: el peso colombiano acumula apreciación fuerte en junio 2026, tocando niveles no vistos desde inicios de 2021 con un descenso de $48.65 en el día.</a>
+            <span class="source-tag">&#128279; Colombia.com / Banco de la República · 17 Jun 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTICIAS COQUE Y CARBÓN COQUIZABLE -->
+  <div class="coke-news-section" style="margin-bottom:20px;">
+    <div class="coke-news-header">
+      <span class="icon" style="color:#13b0c4;">&#9830;</span>
+      <h3>Noticias Especializadas: Coque Metalúrgico &amp; Carbón Coquizable — Internacional</h3>
+    </div>
+    <div class="news-list" style="background:transparent;">
+      <div class="news-item" style="background:transparent;">
+        <div class="news-dot"></div>
+        <div>
+          <a href="https://thecoalhub.com/indonesian-coal-exports-face-new-uncertainty-under-state-export-control-plan.html" target="_blank">The Coal Hub (Jun 2026): Indonesia obliga todas las exportaciones de carbón y coque a pasar por empresa estatal DSI desde el 1 de junio — creando incertidumbre para importadores y potencial disrupción en el mercado seaborne global. El ICI4 pasó de US$40.68/t (mín. 4 años, jul 2025) a US$63.80/t en abril 2026, una recuperación del 57% en menos de 12 meses.</a>
+          <span class="source-tag">&#128279; The Coal Hub · Jun 2026 · Fuente especializada carbón</span>
+        </div>
+      </div>
+      <div class="news-item" style="background:transparent;">
+        <div class="news-dot"></div>
+        <div>
+          <a href="https://www.miningweekly.com/article/indonesia-coal-export-shake-up-rattles-miners-traders-2026-05-22" target="_blank">Mining Weekly: Indonesia reduce su meta de producción de carbón de 790 Mt a 600 Mt en 2026 (-24%) — el nuevo arancel de exportación eleva el "piso" de costo del carbón indonesio para todos los compradores internacionales; exportaciones corriendo a ritmo anualizado de 564 Mt, -9.5% interanual.</a>
+          <span class="source-tag">&#128279; Mining Weekly · May 2026 · Fuente especializada minería</span>
+        </div>
+      </div>
+      <div class="news-item" style="background:transparent;">
+        <div class="news-dot"></div>
+        <div>
+          <a href="https://tradingeconomics.com/commodity/coking-coal" target="_blank">Trading Economics / SGX (16 Jun 2026): Carbón coquizable en $243.75/t, acumula +40.69% interanual y +2.42% en el último mes — la demanda estructural de acero en India (nueva capacidad 15.9 Mt JSPL) y las restricciones de oferta indonesias sostienen el nivel. Coque metalúrgico en bolsas asiáticas (DCE, ZCE) mantiene presión alcista de fondo.</a>
+          <span class="source-tag">&#128279; Trading Economics / S&amp;P Global · Jun 2026</span>
+        </div>
+      </div>
+      <div class="news-item" style="background:transparent;">
+        <div class="news-dot"></div>
+        <div>
+          <a href="https://www.aseanbriefing.com/news/indonesia-coal-2026-how-export-controls-and-policy-shape-investment-returns/" target="_blank">ASEAN Briefing (Abr 2026): Las disrupciones en el suministro de GNL del Golfo Pérsico empujaron a Asia a incrementar el uso de carbón como combustible estable — Japón y Corea del Sur son los más vulnerables por su doble exposición a disrupciones de GNL e histórica dependencia del carbón indonesio. Colombia se posiciona como proveedor alternativo de coque ante el vacío dejado por Indonesia.</a>
+          <span class="source-tag">&#128279; ASEAN Briefing · Abr 2026 · Fuente especializada Asia-Pacífico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPLICACIONES ESTRATÉGICAS PSP -->
+  <div class="strategic">
+    <h2>&#9670; Implicaciones Estratégicas para PSP Barranquilla</h2>
+    <div class="strategic-grid">
+      <div class="strat-card">
+        <h4>&#128506; TRM y Competitividad</h4>
+        <p>La TRM en $3,427 (mínimo desde enero 2021) abarata el costo CIF de importaciones procesadas en PSP —coque, fertilizantes, cereales— beneficiando a clientes industriales y agroindustriales. Simultáneamente, presiona los márgenes de exportación del coque colombiano, lo cual puede redirigir mayor volumen hacia el mercado interno y fortalecer el movimiento portuario de Barranquilla. Vigilar el umbral de $3,400 como soporte técnico de la TRM.</p>
+      </div>
+      <div class="strat-card">
+        <h4>&#9883; Oportunidad en Coque</h4>
+        <p>Las restricciones exportadoras de Indonesia abren una ventana estratégica para Colombia como tercer exportador mundial de coque. PSP debe preparar mayor capacidad logística de importación y exportación para coque en H2-2026. La demanda india (expansión JSPL y Shyam Metallics) y brasileña sostienen el flujo de buques Panamax con origen en los coquerías de Boyacá y Cundinamarca con salida por Barranquilla. Anticipe aumento de tráfico +15-20% en este segmento.</p>
+      </div>
+      <div class="strat-card">
+        <h4>&#9889; Gas &amp; Energía Portuaria</h4>
+        <p>El déficit de gas proyectado en 39% para 2026 y el alza en tarifas del 34% elevan los costos operativos de los equipos portuarios a gas. La transición energética del Caribe —como destacó PSP en el evento CCI— se convierte en necesidad urgente. Acelerar proyectos de generación solar + BESS y evaluar la conexión a la regasificadora Puerto Bahía (Ecopetrol-Frontera) que operaría en diciembre 2026 como fuente alternativa de gas industrial.</p>
+      </div>
+      <div class="strat-card">
+        <h4>&#128674; Carga General &amp; Graneles</h4>
+        <p>La caída en precios de cereales (maíz -$20/t en 4 semanas, trigo en mínimo interanual) genera oportunidad para mayor volumen de importaciones de granos vía PSP, destinados a la industria avícola, pecuaria y de alimentos del Caribe. El crecimiento de contenedores por encima del 5% en 2026 exige mayor eficiencia en los muelles de carga general. La apertura de Puerto Antioquia en diciembre podría desviar algunas cargas no agrícolas: monitorear impacto en la captación de clientes de PSP.</p>
+      </div>
+      <div class="strat-card">
+        <h4>&#128200; Entorno Electoral e Inversión</h4>
+        <p>La segunda vuelta presidencial del 21 de junio es el catalizador más inmediato para el clima de negocios. Un resultado favorable a la inversión privada podría destrabar proyectos de infraestructura portuaria y reducir presión regulatoria. Las tasas superiores al 12% encarecen el financiamiento de expansiones en capex portuario: priorizar proyectos con retorno rápido y co-financiación con el sector privado. La calificación Baa3 de Colombia (Moody's) mantiene acceso al mercado de deuda internacional.</p>
+      </div>
+      <div class="strat-card">
+        <h4>&#127975; Dragado &amp; Operaciones</h4>
+        <p>El Puerto de Barranquilla tiene asegurados los recursos de dragado ($116.000 M) para el canal de acceso de 22 km hasta diciembre 2026, garantizando continuidad operativa y condiciones de navegabilidad para buques de mayor calado que transportan carbón, coque y graneles. La intensidad exportadora de acero y derivados (15% del movimiento) del puerto debe sostenerse con la mejora del canal. La conexión fluvial por el Magdalena posiciona a Barranquilla como la puerta natural de entrada al interior del país para granos y fertilizantes importados.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-row">
+    <strong>PALERMO SOCIEDAD PORTUARIA &middot; GRUPO COREMAR &middot; BARRANQUILLA, COLOMBIA</strong>
+  </div>
+  <div class="footer-row">
+    Sistema de Inteligencia de Mercados &nbsp;|&nbsp; <strong>Edición 4</strong> &nbsp;|&nbsp; Miércoles, 17 de junio de 2026 &nbsp;|&nbsp; Generado a las 16:39 COT
+  </div>
+  <div class="footer-row" style="margin-top:8px;">
+    Contacto: <a href="mailto:alfredo.gonzales@coremar.com">alfredo.gonzales@coremar.com</a>
+  </div>
+  <div class="footer-row" style="margin-top:6px;font-size:10px;color:#667;">
+    Este boletín es de carácter informativo y no constituye asesoría financiera. Los precios son referencias de mercado sujetas a variación. &copy; 2026 Palermo Sociedad Portuaria &middot; Grupo Coremar.
+  </div>
+</div>
 
 </body>
 </html>
