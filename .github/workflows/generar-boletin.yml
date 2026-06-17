@@ -33,3 +33,8 @@ jobs:
           git add index.html
           git commit -m "Boletin del dia $(date +%Y-%m-%d)" || echo "Sin cambios"
           git push
+      - name: Avisar a Make que el boletin esta listo
+        run: |
+          curl -X POST "${{ secrets.MAKE_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"status\": \"listo\"}"
