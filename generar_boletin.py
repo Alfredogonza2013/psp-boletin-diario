@@ -1,0 +1,47 @@
+import os
+import json
+import requests
+
+api_key = os.environ["ANTHROPIC_API_KEY"]
+
+prompt = """Eres el sistema de Inteligencia de Mercados de Palermo Sociedad Portuaria (PSP), Grupo Coremar, Barranquilla, Colombia. Genera un boletín económico diario completo en HTML para hoy. El boletín debe incluir:
+
+1) INDICADORES CLAVE actualizados: TRM/dólar Colombia, Petróleo Brent y WTI, Gas Natural, Maíz/Soya/Trigo en Chicago, Coque metalúrgico, principales bolsas.
+
+2) CONTEXTO INTERNACIONAL por categoría de carga portuaria: Granel limpio/cereales, Coque metalúrgico, Fertilizantes, Químicos y líquidos, Metálicos, Carga general.
+
+3) NOTICIAS con links reales de Valora Analitik: 4 de Infraestructura, 4 Petroleras, 4 Macroeconómicas, 4 Económicas internacionales, 4 Empresariales, 4 Mercados financieros.
+
+4) IMPLICACIONES ESTRATÉGICAS para PSP Barranquilla.
+
+Diseño profesional navy #0a2540 y teal #13b0c4. IMPORTANTE: devuelve ÚNICAMENTE el código HTML puro comenzando con <!DOCTYPE html> sin ningún texto adicional, sin markdown, sin bloques de código, sin comillas."""
+
+response = requests.post(
+    "https://api.anthropic.com/v1/messages",
+    headers={
+        "x-api-key": api_key,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    },
+    json={
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 16000,
+        "messages": [{"role": "user", "content": prompt}],
+        "tools": [{"type": "web_search_20250305", "name": "web_search"}],
+    },
+    timeout=600,
+)
+
+data = response.json()
+
+if response.status_code != 200:
+    print("ERROR:", json.dumps(data, indent=2))
+    raise SystemExit(1)
+
+html_parts = [block["text"] for block in data["content"] if block.get("type") == "text"]
+html_final = "".join(html_parts)
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_final)
+
+print("Boletín generado correctamente. stop_reason:", data.get("stop_reason"))
