@@ -1,20 +1,16 @@
 name: Generar Boletin PSP
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-generar:
-runs-on: ubuntu-latest
+  generar:
+    runs-on: ubuntu-latest
 
-```
-steps:
-  - name: Descargar repositorio
-    uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  - name: Verificar prompt
-    run: |
-      echo "Prompt encontrado"
-      ls -la
-      cat prompt.txt | head -5
-```
+      - name: Verificar prompt
+        run: |
+          echo "Prompt encontrado"
+          ls -la
