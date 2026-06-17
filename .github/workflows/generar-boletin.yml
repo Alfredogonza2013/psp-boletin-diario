@@ -1,53 +1,20 @@
 name: Generar Boletin PSP
 
 on:
-  workflow_dispatch:
+workflow_dispatch:
 
 jobs:
-  generar:
-    runs-on: ubuntu-latest
+generar:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Descargar repositorio
-        uses: actions/checkout@v4
+```
+steps:
+  - name: Descargar repositorio
+    uses: actions/checkout@v4
 
-      - name: Leer prompt
-        id: prompt
-        run: |
-          echo "PROMPT<<EOF" >> $GITHUB_ENV
-          cat prompt.txt >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: Generar HTML con Claude
-        run: |
-          curl https://api.anthropic.com/v1/messages \
-            --header "x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}" \
-            --header "anthropic-version: 2023-06-01" \
-            --header "content-type: application/json" \
-            --data "{
-              \"model\":\"claude-sonnet-4-0\",
-              \"max_tokens\":12000,
-              \"messages\":[
-                {
-                  \"role\":\"user\",
-                  \"content\":\"${PROMPT}\"
-                }
-              ]
-            }" > respuesta.json
-
-      - name: Extraer HTML
-        run: |
-          python3 -c "
-          import json
-          data=json.load(open('respuesta.json'))
-          html=data['content'][0]['text']
-          open('index.html','w',encoding='utf-8').write(html)
-          "
-
-      - name: Guardar cambios
-        run: |
-          git config user.name 'github-actions'
-          git config user.email 'github-actions@github.com'
-          git add index.html
-          git commit -m 'Actualización automática boletín' || echo 'Sin cambios'
-          git push
+  - name: Verificar prompt
+    run: |
+      echo "Prompt encontrado"
+      ls -la
+      cat prompt.txt | head -5
+```
