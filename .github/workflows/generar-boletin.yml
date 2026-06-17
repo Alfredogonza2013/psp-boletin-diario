@@ -6,11 +6,28 @@ on:
 jobs:
   generar:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verificar prompt
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Generar boletín con Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python generar_boletin.py
+
+      - name: Publicar cambios en GitHub
         run: |
-          echo "Prompt encontrado"
-          ls -la
+          git config user.name "Boletin PSP Bot"
+          git config user.email "boletin-bot@psp.local"
+          git add index.html
+          git commit -m "Boletin del dia $(date +%Y-%m-%d)" || echo "Sin cambios"
+          git push
