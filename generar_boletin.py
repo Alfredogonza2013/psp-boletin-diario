@@ -31,6 +31,7 @@ INSTRUCCIONES DE ENCABEZADO (sigue esto exactamente, sin variaciones ni texto ad
 - La fecha del boletín debe ser exactamente: {fecha_str}
 - El texto "Generado a las..." debe decir exactamente: Generado a las MARCADOR_HORA COT
 - En el pie de página, el correo de contacto debe decir exactamente: alfredo.gonzales@coremar.com (nunca otro correo)
+
 El boletín debe incluir:
 1) INDICADORES CLAVE actualizados: TRM/dólar Colombia, Petróleo Brent y WTI, Gas Natural, Maíz/Soya/Trigo en Chicago, Coque metalúrgico, principales bolsas.
 2) CONTEXTO INTERNACIONAL por categoría de carga portuaria: Granel limpio/cereales, Fertilizantes, Químicos y líquidos, Metálicos, Carga general (2-3 líneas cada uno). Para COQUE METALÚRGICO, profundiza más (6-8 líneas): incluye precio internacional actual y tendencia, principales países exportadores (Australia, China, Indonesia), principales países importadores/demandantes (India, Brasil), factores que están moviendo el mercado esta semana, y cómo afecta esto a las importaciones de coque por PSP Barranquilla.
@@ -76,8 +77,30 @@ if idx == -1:
     raise SystemExit(1)
 
 html_final = html_completo[idx:]
+
 hora_real = datetime.now(ZoneInfo("America/Bogota")).strftime("%H:%M")
 html_final = html_final.replace("MARCADOR_HORA", hora_real)
+
+BOTON_PDF = """
+<style>
+  @media print { #btn-descargar-pdf { display: none !important; } }
+  #btn-descargar-pdf {
+    position: fixed; bottom: 24px; right: 24px;
+    background: #13b0c4; color: #fff; border: none;
+    padding: 14px 22px; border-radius: 8px; font-weight: bold;
+    font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 9999;
+  }
+  #btn-descargar-pdf:hover { background: #0a8a9a; }
+</style>
+<button id="btn-descargar-pdf" onclick="window.print()">📥 Descargar PDF</button>
+"""
+
+if "</body>" in html_final:
+    html_final = html_final.replace("</body>", BOTON_PDF + "</body>")
+else:
+    html_final = html_final + BOTON_PDF
+
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_final)
 
