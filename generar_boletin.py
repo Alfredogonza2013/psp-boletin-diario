@@ -31,11 +31,11 @@ INSTRUCCIONES DE ENCABEZADO (sigue esto exactamente, sin variaciones ni texto ad
 - En la esquina superior derecha, en el lugar de la edición, escribe exactamente: Edición {nueva_edicion}
 - La fecha del boletín debe ser exactamente: {fecha_str}
 - El texto "Generado a las..." debe decir exactamente: Generado a las {hora_str}
-
+- En el pie de página, el correo de contacto debe decir exactamente: alfredo.gonzales@coremar.com (nunca otro correo)
 El boletín debe incluir:
 1) INDICADORES CLAVE actualizados: TRM/dólar Colombia, Petróleo Brent y WTI, Gas Natural, Maíz/Soya/Trigo en Chicago, Coque metalúrgico, principales bolsas.
-2) CONTEXTO INTERNACIONAL por categoría de carga portuaria: Granel limpio/cereales, Coque metalúrgico, Fertilizantes, Químicos y líquidos, Metálicos, Carga general.
-3) NOTICIAS con links reales de Valora Analitik: 4 de Infraestructura, 4 Petroleras, 4 Macroeconómicas, 4 Económicas internacionales, 4 Empresariales, 4 Mercados financieros.
+2) CONTEXTO INTERNACIONAL por categoría de carga portuaria: Granel limpio/cereales, Fertilizantes, Químicos y líquidos, Metálicos, Carga general (2-3 líneas cada uno). Para COQUE METALÚRGICO, profundiza más (6-8 líneas): incluye precio internacional actual y tendencia, principales países exportadores (Australia, China, Indonesia), principales países importadores/demandantes (India, Brasil), factores que están moviendo el mercado esta semana, y cómo afecta esto a las importaciones de coque por PSP Barranquilla.
+3) NOTICIAS con links reales: 4 de Infraestructura (Valora Analitik), 4 Petroleras (Valora Analitik), 4 Macroeconómicas (Valora Analitik), 4 Económicas internacionales (Valora Analitik), 4 Empresariales (Valora Analitik), 4 Mercados financieros (Valora Analitik), y una sección nueva de 4 NOTICIAS DE COQUE METALÚRGICO Y CARBÓN COQUIZABLE (busca en fuentes especializadas como Argus Media, S&P Global Platts, Mining.com, o Valora Analitik si cubre el tema) sobre precios, oferta/demanda, contratos, o movimientos relevantes del mercado de coque a nivel internacional.
 4) IMPLICACIONES ESTRATÉGICAS para PSP Barranquilla.
 
 Diseño profesional navy #0a2540 y teal #13b0c4. IMPORTANTE: tu respuesta completa debe ser ÚNICAMENTE el código HTML, comenzando exactamente con <!DOCTYPE html> como primer carácter. Nunca escribas frases de introducción o confirmación antes o después del código (por ejemplo, nunca escribas "Aquí está el boletín" ni nada similar). Sin markdown, sin bloques de código, sin comillas envolventes."""
