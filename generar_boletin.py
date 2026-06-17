@@ -12,7 +12,6 @@ MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
 
 ahora = datetime.now(ZoneInfo("America/Bogota"))
 fecha_str = f"{DIAS[ahora.weekday()]}, {ahora.day} de {MESES[ahora.month - 1]} de {ahora.year}"
-hora_str = ahora.strftime("%H:%M") + " COT"
 
 EDICION_FILE = "edicion.txt"
 try:
@@ -30,7 +29,7 @@ INSTRUCCIONES DE ENCABEZADO (sigue esto exactamente, sin variaciones ni texto ad
 - Debajo de "BOLETÍN ECONÓMICO DIARIO" escribe exactamente: Operaciones Portuarias (nada más)
 - En la esquina superior derecha, en el lugar de la edición, escribe exactamente: Edición {nueva_edicion}
 - La fecha del boletín debe ser exactamente: {fecha_str}
-- El texto "Generado a las..." debe decir exactamente: Generado a las {hora_str}
+- El texto "Generado a las..." debe decir exactamente: Generado a las MARCADOR_HORA COT
 - En el pie de página, el correo de contacto debe decir exactamente: alfredo.gonzales@coremar.com (nunca otro correo)
 El boletín debe incluir:
 1) INDICADORES CLAVE actualizados: TRM/dólar Colombia, Petróleo Brent y WTI, Gas Natural, Maíz/Soya/Trigo en Chicago, Coque metalúrgico, principales bolsas.
@@ -77,11 +76,12 @@ if idx == -1:
     raise SystemExit(1)
 
 html_final = html_completo[idx:]
-
+hora_real = datetime.now(ZoneInfo("America/Bogota")).strftime("%H:%M")
+html_final = html_final.replace("MARCADOR_HORA", hora_real)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_final)
 
 with open(EDICION_FILE, "w") as f:
     f.write(str(nueva_edicion))
 
-print(f"Boletín generado. Edición {nueva_edicion}, fecha {fecha_str}, hora {hora_str}. stop_reason: {data.get('stop_reason')}")
+print(f"Boletín generado. Edición {nueva_edicion}, fecha {fecha_str}, hora {hora_real}. stop_reason: {data.get('stop_reason')}")
