@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import requests
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -40,34 +41,77 @@ El boletín debe incluir:
 
 Diseño profesional navy #0a2540 y teal #13b0c4. IMPORTANTE: tu respuesta completa debe ser ÚNICAMENTE el código HTML, comenzando exactamente con <!DOCTYPE html> como primer carácter. Nunca escribas frases de introducción o confirmación antes o después del código (por ejemplo, nunca escribas "Aquí está el boletín" ni nada similar). Sin markdown, sin bloques de código, sin comillas envolventes."""
 
-response = requests.post(
-    "https://api.anthropic.com/v1/messages",
-    headers={
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-    },
-    json={
-        "model": "claude-sonnet-4-6",
-        "max_tokens": 24000,
-        "messages": [{"role": "user", "content": prompt}],
-        "tools": [{"type": "web_search_20250305", "name": "web_search"}],
-    },
-    timeout=600,
-)
 
-data = response.json()
+def generar_con_streaming(url, headers, payload, timeout=600):
+    full_text = ""
+    current_block_type = None
+    stop_reason = None
 
-if response.status_code != 200:
-    print("ERROR:", json.dumps(data, indent=2))
+    with requests.post(url, headers=headers, json=payload, stream=True, timeout=timeout) as resp:
+        if resp.status_code != 200:
+            raise requests.exceptions.HTTPError(f"HTTP {resp.status_code}: {resp.text}")
+        for raw_line in resp.iter_lines(decode_unicode=True):
+            if not raw_line or not raw_line.startswith("data:"):
+                continue
+            data_str = raw_line[len("data:"):].strip()
+            try:
+                event = json.loads(data_str)
+            except json.JSONDecodeError:
+                continue
+            etype = event.get("type")
+            if etype == "content_block_start":
+                current_block_type = event.get("content_block", {}).get("type")
+            elif etype == "content_block_delta":
+                delta = event.get("delta", {})
+                if delta.get("type") == "text_delta" and current_block_type == "text":
+                    full_text += delta.get("text", "")
+            elif etype == "content_block_stop":
+                current_block_type = None
+            elif etype == "message_delta":
+                stop_reason = event.get("delta", {}).get("stop_reason", stop_reason)
+            elif etype == "error":
+                raise RuntimeError(f"Error de la API durante streaming: {event}")
+
+    return full_text, stop_reason
+
+
+payload = {
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 24000,
+    "stream": True,
+    "messages": [{"role": "user", "content": prompt}],
+    "tools": [{"type": "web_search_20250305", "name": "web_search"}],
+}
+headers = {
+    "x-api-key": api_key,
+    "anthropic-version": "2023-06-01",
+    "content-type": "application/json",
+}
+
+MAX_REINTENTOS = 3
+html_completo = None
+stop_reason = None
+ultimo_error = None
+
+for intento in range(1, MAX_REINTENTOS + 1):
+    try:
+        html_completo, stop_reason = generar_con_streaming(
+            "https://api.anthropic.com/v1/messages", headers, payload, timeout=600
+        )
+        break
+    except requests.exceptions.RequestException as e:
+        ultimo_error = e
+        print(f"Intento {intento} fallo por error de conexion: {e}")
+        if intento < MAX_REINTENTOS:
+            time.sleep(15)
+
+if html_completo is None:
+    print(f"ERROR: no se pudo conectar con la API despues de {MAX_REINTENTOS} intentos. Ultimo error: {ultimo_error}")
     raise SystemExit(1)
 
-if data.get("stop_reason") != "end_turn":
-    print("ADVERTENCIA: la respuesta se cortó antes de terminar. stop_reason:", data.get("stop_reason"))
+if stop_reason != "end_turn":
+    print("ADVERTENCIA: la respuesta se cortó antes de terminar. stop_reason:", stop_reason)
     raise SystemExit(1)
-
-html_parts = [block["text"] for block in data["content"] if block.get("type") == "text"]
-html_completo = "".join(html_parts)
 
 idx = html_completo.find("<!DOCTYPE html>")
 if idx == -1:
@@ -107,4 +151,4 @@ with open("index.html", "w", encoding="utf-8") as f:
 with open(EDICION_FILE, "w") as f:
     f.write(str(nueva_edicion))
 
-print(f"Boletín generado. Edición {nueva_edicion}, fecha {fecha_str}, hora {hora_real}. stop_reason: {data.get('stop_reason')}")
+print(f"Boletín generado. Edición {nueva_edicion}, fecha {fecha_str}, hora {hora_real}. stop_reason: {stop_reason}")
